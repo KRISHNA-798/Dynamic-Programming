@@ -1,0 +1,9 @@
+//Here we discuss about Floyd warshall algorithm (All pair shortest path).
+firstly what is this algorithm and why is it needed (most important Question we get while studying every algorithm)
+Here basically we are given with a senario where we have to find the shortest path between given points (In real life consider shortest path between cities and towns to optimize
+the values in map), and to achieve this we found an famous algorithm called "dijkstra's algorithm of shortest path". We were able to achieve the shortest path but them
+why floyd's again , here it is because the dijkstra had a few constraints like it may or may not produce correct result if the input had -ve values( Here we basically use a mtrix to 
+store initial values and give it to the algorithm , it can be +ve or -ve). so in order to overcome this constraint we developed floyd's algorithm (All pair shortest path).
+Another big Question why using dynamic programming specifically?
+ 
+ 
