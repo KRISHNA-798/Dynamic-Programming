@@ -6,4 +6,73 @@ why floyd's again , here it is because the dijkstra had a few constraints like i
 store initial values and give it to the algorithm , it can be +ve or -ve). so in order to overcome this constraint we developed floyd's algorithm (All pair shortest path).
 Another big Question why using dynamic programming specifically?
  
- 
+ CODE: 
+ import java.util.*;
+import java.lang.Math;
+
+public class floydwarshall
+{
+	static void wrshall(int arr[][] , int k , int a, int b)
+	{
+		for(int m = 0; m < k; m++)
+		{
+		for(int i = 0; i < a; i++)
+		{
+			for(int j = 0; j < b; j++)
+			{
+				if( i == j)
+					arr[i][j] = 0;
+				else
+				{
+					arr[i][j] = Math.min(arr[i][j] , (arr[i][m] + arr[m][j]));
+					/* This helps snippet helps you understand what happens in the matrix after every time we apply above step.
+					I use it to track the process that it is going in correct process, this also helps you to find mistakes at what interation it happened.
+					
+					System.out.println("value of m =" + m);
+		              for(int x = 0; x < a; x++)
+		              {
+			             for(int y = 0; y < b; y++)
+			             {
+				              System.out.print(arr[x][y] + "    ");
+			             }
+			             System.out.println();
+		              }
+				      System.out.println("   ");	
+					  */
+				}
+			}
+		}
+		}
+	}
+	public static void main(String args[])
+	{
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the matrix dimensions :");
+		int a = s.nextInt();
+		int b = s.nextInt();
+		int arr[][] = new int[a][b];
+		System.out.println("Enter the matrix values :");
+		for(int i = 0; i < a; i++)
+		{
+			for(int j = 0; j < b; j++)
+			{
+				arr[i][j] = s.nextInt();
+				if( i != j && arr[i][j] == 0)//here 0 represents infinity distance.
+				{
+					arr[i][j] = 9999;
+				}
+			}
+		}
+		int k = a;
+		wrshall(arr,k,a,b);
+		System.out.println("After applying the Floydwarshall, the final distance matrix is : ");
+		for(int x = 0; x < a; x++)
+		{
+			for(int y = 0; y < b; y++)
+			{
+				System.out.print(arr[x][y] + "    ");
+			}
+			System.out.println();
+		}
+	}
+}
